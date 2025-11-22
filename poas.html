@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volcán Poás - OASIS TICO</title>
+    <style>
+        @import url('Fotos portadas/poas portada.png');
+        @import url('Fotos portadas/poas portada.png');
+        
+        :root {
+            --azul-poas: #3498DB;
+            --gris-volcan: #7F8C8D;
+            --blanco-humo: #ECF0F1;
+            --blanco: #FFF8F0;
+            --verde-laguna: #2ECC71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--blanco);
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Fondo con efecto de humo volcánico */
+        .smoke-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".15" fill="%237F8C8D"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".25" fill="%237F8C8D"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%237F8C8D"/></svg>');
+            background-size: cover;
+            z-index: -1;
+            animation: smokeAnimation 20s linear infinite;
+        }
+        
+        @keyframes smokeAnimation {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1200px; }
+        }
+        
+        /* Botón de regreso con estilo volcánico */
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--azul-poas);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px) scale(1.1);
+            background: var(--azul-poas);
+        }
+        
+        .back-btn i {
+            color: var(--azul-poas);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover i {
+            color: white;
+        }
+        
+        /* Hero section con efecto parallax */
+        .hero {
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('Fotos portadas/portada.jpg') center/cover fixed;  
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--blanco));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.5s;
+        }
+        
+        @keyframes fadeUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Sección de información */
+        .info-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .info-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(to right, var(--verde-laguna), var(--azul-poas));
+            border-radius: 3px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--azul-poas);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--verde-laguna);
+            border-radius: 2px;
+        }
+        
+        /* Tarjetas de información con estilo volcánico */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .info-card:nth-child(1) { animation: cardAppear 0.8s forwards 0.3s; }
+        .info-card:nth-child(2) { animation: cardAppear 0.8s forwards 0.5s; }
+        .info-card:nth-child(3) { animation: cardAppear 0.8s forwards 0.7s; }
+        
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, var(--verde-laguna), var(--azul-poas));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .card-header i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-body ul {
+            list-style-type: none;
+        }
+        
+        .card-body li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .card-body li::before {
+            content: '•';
+            color: var(--azul-poas);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Mapa interactivo */
+        .map-container {
+            margin: 4rem auto;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(0.95);
+            transition: transform 0.4s ease;
+            border: 5px solid white;
+        }
+        
+        .map-container:hover {
+            transform: scale(1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            display: block;
+        }
+        
+        /* Galería de fotos */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Efecto de volcán decorativo */
+        .volcano-decoration {
+            position: absolute;
+            font-size: 10rem;
+            color: rgba(52, 152, 219, 0.1);
+            z-index: -1;
+        }
+        
+        .volcano-1 {
+            top: 50px;
+            left: -50px;
+            transform: rotate(-20deg);
+        }
+        
+        .volcano-2 {
+            bottom: 100px;
+            right: -50px;
+            transform: rotate(20deg);
+        }
+        
+        /* Efecto de vapor flotante */
+        .vapor-particle {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(236, 240, 241, 0.6);
+            z-index: -1;
+            animation: floatVapor 8s infinite linear;
+        }
+        
+        @keyframes floatVapor {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.7; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        /* Footer con gradiente volcánico */
+        footer {
+            background: linear-gradient(to right, var(--azul-poas), var(--gris-volcan));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="Fotos portadas/poas portada.png" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="white"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="white"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="white"/></svg>');
+            background-size: cover;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .volcano-decoration {
+                font-size: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="smoke-bg"></div>
+    
+    <a href="https://geison1228.github.io/OasisTico.io/" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Volcán Poás</h1>
+            <p>El coloso del Valle Central</p>
+        </div>
+    </section>
+    
+    <div class="volcano-decoration volcano-1">
+        <i class="fas fa-mountain"></i>
+    </div>
+    
+    <div class="volcano-decoration volcano-2">
+        <i class="fas fa-mountain"></i>
+    </div>
+    
+    <!-- Partículas de vapor -->
+    <div class="vapor-particle" style="left: 10%; animation-delay: 0s;"><i class="fas fa-cloud"></i></div>
+    <div class="vapor-particle" style="left: 20%; animation-delay: 2s;"><i class="fas fa-cloud"></i></div>
+    <div class="vapor-particle" style="left: 35%; animation-delay: 4s;"><i class="fas fa-cloud"></i></div>
+    <div class="vapor-particle" style="left: 50%; animation-delay: 1s;"><i class="fas fa-cloud"></i></div>
+    <div class="vapor-particle" style="left: 65%; animation-delay: 3s;"><i class="fas fa-cloud"></i></div>
+    <div class="vapor-particle" style="left: 80%; animation-delay: 5s;"><i class="fas fa-cloud"></i></div>
+    <div class="vapor-particle" style="left: 90%; animation-delay: 6s;"><i class="fas fa-cloud"></i></div>
+    
+    <section class="info-section">
+        <h2 class="section-title">El Gigante con Laguna Azufrada</h2>
+        
+        <div class="info-cards">
+            <div class="info-card">
+                <div class="card-header">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Ubicación</h3>
+                </div>
+                <div class="card-body">
+                    <p>El Volcán Poás se encuentra entre Alajuela y Heredia, en la Cordillera Volcánica Central.</p>
+                    <p>Distancia desde San José: aproximadamente 45 km (1 hora en auto).</p>
+                    <p>Altitud: 2,708 metros sobre el nivel del mar.</p>
+                    <p>Forma parte del Parque Nacional Volcán Poás, uno de los más visitados de Costa Rica.</p>
+                    <p>Clima: Frío de montaña con temperaturas entre 5°C y 15°C.</p>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="card-header">
+                    <i class="fas fa-water"></i>
+                    <h3>Características</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Posee uno de los cráteres activos más grandes del mundo (1.3 km de diámetro)</li>
+                        <li>Laguna caliente con aguas azufradas de color turquesa</li>
+                        <li>Actividad fumarólica constante con emisiones de vapor</li>
+                        <li>Última erupción importante: 2017</li>
+                        <li>Zona de exclusión variable según actividad volcánica</li>
+                        <li>Bosque nuboso en sus faldas con gran biodiversidad</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="card-header">
+                    <i class="fas fa-hiking"></i>
+                    <h3>Actividades</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Observación del cráter principal desde miradores seguros</li>
+                        <li>Caminata a la laguna Botos (cráter extinto con laguna fría)</li>
+                        <li>Sendero Escalonia a través del bosque nuboso</li>
+                        <li>Avistamiento de aves endémicas como el colibrí</li>
+                        <li>Tour al museo y centro de visitantes del parque</li>
+                        <li>Visita a plantaciones de fresas en la zona</li>
+                        <li>Fotografía del paisaje volcánico y la laguna azufrada</li>
+                        <li>Tour combinado con La Paz Waterfall Gardens</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.456239784424!2d-84.2428649240419!3d10.23534769319926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa06b7e4d54fb1f%3A0xd0b2309a5a5a5a5a!2sVolc%C3%A1n%20Po%C3%A1s!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        
+        <h2 class="section-title">Galería de Imágenes</h2>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="Fotos portadas/poas1.jpg" alt="Vista del cráter principal con laguna azufrada">
+            </div>
+            <div class="gallery-item">
+                <img src="Fotos portadas/poas2.jpg" alt="Actividad fumarólica del Poás">
+            </div>
+            <div class="gallery-item">
+                <img src="Fotos portadas/poas3.jpg" alt="Laguna Botos en el cráter extinto">
+            </div>
+            <div class="gallery-item">
+                <img src="Fotos portadas/poas4.jpg" alt="Bosque nuboso alrededor del volcán">
+            </div>
+            <div class="gallery-item">
+                <img src="Fotos portadas/poas5.jpg" alt="Miradores del Parque Nacional">
+            </div>
+            <div class="gallery-item">
+                <img src="Fotos portadas/poas6.jpg" alt="Vista panorámica del Valle Central">
+            </div>
+        </div>
+    </section>
+    
+    <div class="warning-box" style="background-color: #FFF3CD; border-left: 5px solid #FFC107; padding: 15px; margin: 20px 0; border-radius: 4px;">
+        <h4 style="color: #856404; margin-top: 0;"><i class="fas fa-exclamation-triangle"></i> ADVERTENCIA LEGAL</h4>
+        <p style="color: #856404; margin-bottom: 0;">
+            El acceso al Volcán Poás está estrictamente regulado por el Sistema Nacional de Áreas de Conservación (SINAC). 
+            El ingreso solo está permitido por los senderos autorizados y en horarios establecidos. 
+            <strong>No recomendamos ni avalamos el acceso ilegal a zonas restringidas del volcán</strong>, ya que puede acarrear 
+            consecuencias legales y representa un grave riesgo para la integridad física debido a la actividad volcánica 
+            y emisiones de gases tóxicos. Toda persona que ingrese a áreas prohibidas lo hace por su propia voluntad 
+            y asumiendo plena responsabilidad ante la ley.
+        </p>
+    </div>
+    
+    <footer>
+        <p>© 2025 OASIS TICO - Todos los derechos reservados</p>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
