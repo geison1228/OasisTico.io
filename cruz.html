@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Cruz de Alajuelita - OASIS TICO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-cielo: #3498DB;
+            --verde-colina: #27AE60;
+            --dorado-cruz: #F1C40F;
+            --gris-montana: #7F8C8D;
+            --blanco-nube: #FDF6E3;
+            --blanco: #FFF8F0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--blanco);
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Fondo con efecto de colinas */
+        .hills-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".15" fill="%233498DB"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".25" fill="%233498DB"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%233498DB"/></svg>');
+            background-size: cover;
+            z-index: -1;
+            animation: hillsAnimation 20s linear infinite;
+        }
+        
+        @keyframes hillsAnimation {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1200px; }
+        }
+        
+        /* Botón de regreso con estilo celestial */
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--dorado-cruz);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px) scale(1.1);
+            background: var(--dorado-cruz);
+        }
+        
+        .back-btn i {
+            color: var(--dorado-cruz);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover i {
+            color: white;
+        }
+        
+        /* HERO SECTION - PORTADA PRINCIPAL */
+        .hero {
+            height: 70vh;
+            min-height: 500px;
+            background: 
+                linear-gradient(
+                    rgba(241, 196, 15, 0.4),  /* Dorado cruz con 40% opacidad */
+                    rgba(52, 152, 219, 0.3)    /* Azul cielo con 30% opacidad */
+                ),
+                /* IMAGEN DE PORTADA: La Cruz de Alajuelita */
+                url('Fotos portadas/cruzportada.jpg') 
+                center/cover 
+                fixed;  
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--blanco));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.5s;
+        }
+        
+        @keyframes fadeUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Sección de información */
+        .info-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .info-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(to right, var(--dorado-cruz), var(--azul-cielo));
+            border-radius: 3px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--azul-cielo);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--dorado-cruz);
+            border-radius: 2px;
+        }
+        
+        /* Tarjetas de información con estilo celestial */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .info-card:nth-child(1) { animation: cardAppear 0.8s forwards 0.3s; }
+        .info-card:nth-child(2) { animation: cardAppear 0.8s forwards 0.5s; }
+        .info-card:nth-child(3) { animation: cardAppear 0.8s forwards 0.7s; }
+        
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, var(--dorado-cruz), var(--azul-cielo));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .card-header i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-body ul {
+            list-style-type: none;
+        }
+        
+        .card-body li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .card-body li::before {
+            content: '•';
+            color: var(--dorado-cruz);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Mapa interactivo */
+        .map-container {
+            margin: 4rem auto;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(0.95);
+            transition: transform 0.4s ease;
+            border: 5px solid white;
+        }
+        
+        .map-container:hover {
+            transform: scale(1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            display: block;
+        }
+        
+        /* Galería de fotos */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+        
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            transform: scale(1.1);
+        }
+        
+        /* Decoración de cruces y estrellas */
+        .cross-decoration {
+            position: absolute;
+            font-size: 10rem;
+            color: rgba(52, 152, 219, 0.1);
+            z-index: -1;
+        }
+        
+        .cross-1 {
+            top: 50px;
+            left: -50px;
+            transform: rotate(-15deg);
+        }
+        
+        .cross-2 {
+            bottom: 100px;
+            right: -50px;
+            transform: rotate(15deg);
+        }
+        
+        /* Efecto de estrellas titilantes */
+        .star {
+            position: absolute;
+            font-size: 1.2rem;
+            color: rgba(241, 196, 15, 0.6);
+            z-index: -1;
+            animation: twinkleStar 3s infinite alternate;
+        }
+        
+        @keyframes twinkleStar {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        /* Footer con gradiente celestial */
+        footer {
+            background: linear-gradient(to right, var(--azul-cielo), var(--verde-colina));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="white"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="white"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="white"/></svg>');
+            background-size: cover;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cross-decoration {
+                font-size: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hills-bg"></div>
+    
+    <a href="https://geison1228.github.io/OasisTico.io/" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    
+    <!-- SECCIÓN HERO - PORTADA PRINCIPAL DE LA CRUZ DE ALAJUELITA -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>La Cruz de Alajuelita</h1>
+            <p>Mirador espiritual con vistas panorámicas del Valle Central</p>
+        </div>
+    </section>
+    
+    <div class="cross-decoration cross-1">
+        <i class="fas fa-cross"></i>
+    </div>
+    
+    <div class="cross-decoration cross-2">
+        <i class="fas fa-church"></i>
+    </div>
+    
+    <!-- Estrellas titilantes -->
+    <div class="star" style="top: 15%; left: 10%; animation-delay: 0s;"><i class="fas fa-star"></i></div>
+    <div class="star" style="top: 25%; left: 25%; animation-delay: 0.5s;"><i class="fas fa-star"></i></div>
+    <div class="star" style="top: 35%; left: 40%; animation-delay: 1s;"><i class="fas fa-star"></i></div>
+    <div class="star" style="top: 45%; left: 60%; animation-delay: 1.5s;"><i class="fas fa-star"></i></div>
+    <div class="star" style="top: 55%; left: 75%; animation-delay: 2s;"><i class="fas fa-star"></i></div>
+    <div class="star" style="top: 65%; left: 90%; animation-delay: 2.5s;"><i class="fas fa-star"></i></div>
+    
+    <section class="info-section">
+        <h2 class="section-title">Símbolo de Fe y Tradición</h2>
+        
+        <div class="info-cards">
+            <div class="info-card">
+                <div class="card-header">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Ubicación</h3>
+                </div>
+                <div class="card-body">
+                    <p>La Cruz de Alajuelita se encuentra en el cerro del mismo nombre, en el cantón de Alajuelita, provincia de San José.</p>
+                    <p>Distancia desde San José: aproximadamente 8 km (20 minutos en auto).</p>
+                    <p>Altitud: 1,450 metros sobre el nivel del mar.</p>
+                    <p>Acceso: Carretera principal a Alajuelita, luego camino hacia el cerro.</p>
+                    <p>Clima: Templado con temperaturas entre 18°C y 26°C.</p>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="card-header">
+                    <i class="fas fa-cross"></i>
+                    <h3>Características del Lugar</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Cruz monumental de 25 metros de altura</li>
+                        <li>Mirador con vista panorámica de San José y el Valle Central</li>
+                        <li>Sitio de peregrinación y reflexión espiritual</li>
+                        <li>Capilla y áreas para oración</li>
+                        <li>Senderos ecológicos bien señalizados</li>
+                        <li>Iluminación nocturna de la cruz</li>
+                        <li>Áreas verdes para picnic y descanso</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="card-header">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Actividades y Eventos</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Vía Crucis durante Semana Santa</li>
+                        <li>Celebraciones religiosas especiales</li>
+                        <li>Fotografía de paisajes urbanos y naturales</li>
+                        <li>Senderismo familiar de baja dificultad</li>
+                        <li>Observación de aves urbanas</li>
+                        <li>Picnics en áreas designadas</li>
+                        <li>Visitas guiadas los fines de semana</li>
+                        <li>Atardeceres y amaneceres espectaculares</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.123456789012!2d-84.09876543210987!3d9.876543210987654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e5a4d8e4b5e5%3A0x1c3a1b5d5b5b5b5b!2sLa%20Cruz%20de%20Alajuelita%2C%20Costa%20Rica!5e0!3m2!1sen!2scr!4v1620000000000!5m2!1sen!2scr" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        
+        <h2 class="section-title">Galería de La Cruz de Alajuelita</h2>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="Fotos portadas/cruz1.jpg" alt="Vista panorámica desde La Cruz de Alajuelita">
+            </div>
+            <div class="gallery-item">
+                <img src="Fotos portadas/cruz2.jpg" alt="La Cruz iluminada en la noche">
+            </div>
+            <div class="gallery-item">
+                <img src="Fotos portadas/cruz3.jpg" alt="Senderos hacia la cruz">
+            </div>
+            <div class="gallery-item">
+                <img src="Fotos portadas/cruz6.jpg" alt="Vista del Valle Central desde la cruz">
+            </div>
+            <div class="gallery-item">
+                <!-- Sección de video -->
+                <video autoplay muted loop playsinline poster="Fotos portadas/cruz-alajuelita-video-poster.jpg">
+                    <source src="Fotos portadas/20250921_113817.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento video.
+                </video>
+            </div>
+            <div class="gallery-item">
+                <img src="Fotos portadas/cruz4.jpg" alt="Celebraciones religiosas en la cruz">
+            </div>
+        </div>
+    </section>
+    
+    <div class="warning-box" style="background-color: #D1ECF1; border-left: 5px solid #F1C40F; padding: 15px; margin: 20px 0; border-radius: 4px;">
+        <h4 style="color: #0C5460; margin-top: 0;"><i class="fas fa-exclamation-triangle"></i> RECOMENDACIONES DE VISITA</h4>
+        <p style="color: #0C5460; margin-bottom: 0;">
+            Para disfrutar plenamente de La Cruz de Alajuelita:
+            
+            <strong>Visite durante el día</strong> para mayor seguridad.
+            <strong>Use calzado cómodo</strong> para caminar por los senderos.
+            <strong>Lleve agua y protección solar</strong>.
+            <strong>No deje basura</strong> en el área.
+            <strong>Evite visitas solitarias en horarios nocturnos</strong>.
+        </p>
+    </div>
+    
+    <footer>
+        <p>© 2025 OASIS TICO - Todos los derechos reservados</p>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
