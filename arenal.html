@@ -500,7 +500,45 @@
             <div class="gallery-item">
                 <img src="Fotos portadas/arenalx.jpg" alt="Senderos en el Parque Nacional">
             </div>
+            <!-- Versión Simplificada - Solo HTML y CSS -->
+<div class="gallery-item">
+    <div class="video-container">
+        <video 
+            controls
+            muted 
+            loop 
+            playsinline
+            preload="metadata"
+            style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;"
+            poster="Fotos portadas/video-poster.jpg"
+        >
+            <source src="20250330_055015 (1).mp4" type="video/mp4">
+            Tu navegador no soporta el elemento video.
+        </video>
+    </div>
+</div>
+
+<style>
+    /* Estilo básico para el video */
+    .video-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+    }
     
+    .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Opción más compacta */
+    .video-container.compact video {
+        object-fit: contain;
+        background: #000;
+    }
+</style>
         </div>
     </section>
     
