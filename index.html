@@ -10,10 +10,10 @@
   }
 </style>  
 
-
-      <!--cursor: url('data:image/svg+xml;utf8,<svg xmlns="482a514b-f75b-49d2-ade9-d264f6cf601e.svg" width="64" height="64" viewBox="0 0 32 32"><text font-family="Arial" font-size="32" fill="%23FF5722">🦥</text></svg>'), auto;
-    }
-  </style>
+<!--</style>  titulo test-->
+    
+    
+</style>
 </head>
 <body>
 
@@ -62,7 +62,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Oasis Tico - Destinos de Viaje en Costa Rica</title>
-    <link rel="stylesheet" href="Assets/Fotos Portada/PSX_20250601_213213.jpg"> <!-- Foto Portada -->
+    <link rel="stylesheet" href="Fotos portadas/portada pagina.jpg"> <!-- Foto Portada -->
     <style>
         /* Estilos base */
         body {
@@ -78,7 +78,7 @@
         .hero-header {
             background: linear-gradient(135deg, #002b7f 0%, #ce1126 100%);
             padding: 4rem 0;
-            text-align: center;
+            text-align: right;
             position: relative;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -91,7 +91,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('Assets/Fotos Portada/PSX_20250526_235330.jpg') center/cover;
+            background: url('Fotos portadas/portada pagina.jpg') center/cover;
             opacity: 0.2;
             z-index: 0;
         }
@@ -336,63 +336,285 @@
                 flex-direction: column;
             }
         }
-    </style> <!--Titulo/Portada-->
+</style> 
+<!-- ============================= -->
+<!-- SECCIÓN PRINCIPAL DE PORTADA -->
+<!-- ============================= -->
+<div style=" 
+    width: 100%;
+    padding: 80px 20px;
+    margin-bottom: 40px;
+    background-image: url('Fotos portadas/portada pagina.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(255, 0, 70, 0.4);
+">
+
+    <!-- Fondo oscuro MÁS LIGERO para que se vea tu foto -->
+    <div style="
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.10); /* Antes: 0.65 — Ahora MUCHO más visible */
+        backdrop-filter: blur(0px);    /* Suave desenfoque para elegancia */
+    "></div>
+
+    <!-- Contenido encima del fondo -->
+    <div style="position: relative; text-align: center; color: white;">
+
+    <!--Oasis Tico  Primer titulo-->
+<!-- ============================= -->
+</style>
+
+<h1 class="titulo-tico" id="titulo-principal">
+    Oasis Tico 
+</h1>
+
+</style>
+<style>
+    /* ---------------------------------- */
+    /* ANIMACIONES PERMANENTES (CSS) */
+    /* ---------------------------------- */
+    
+    /* 1. Cambio de colores de la bandera tica */
+    @keyframes ticoColors {
+        0%   { color: #002b7f; }  /* Azul */
+        33%  { color: #ffffff; }  /* Blanco */
+        66%  { color: #ce1126; }  /* Rojo */
+        100% { color: #002b7f; }
+    }
+
+    /* 2. Movimiento suave tipo "flotando" */
+    @keyframes moverSuave {
+        0%   { transform: translate(0px, 0px); }
+        25%  { transform: translate(-100px, 0px); }
+        50%  { transform: translate(0px, -100px); }
+        75%  { transform: translatex(-100px, 0px); }
+        100% { transform: translatex(-50px, -50px); }
+    }
+
+    /* Estilos base del H1 = OasisTico titulo*/
+    .titulo-tico {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: top;
+            margin: traslateY(-20px);
+            max-width: 700px;
+            font-size: 60px;
+        
+            cursor: pointer;
+        
+        
+        /* Aplica ambas animaciones (movimiento y color) */
+        animation: moverSuave 8s infinite ease-in-out, ticoColors 4s infinite ease-in-out;
+        
+        /* Configuraciones para animación y JS */
+        transition: all 0.2s ease-out; 
+        cursor: pointer; 
+        display: inline-block;
+        position: top;
+        
+        /* Sombra inicial (Selva) */
+        text-shadow: 0 0 12px rgba(236, 1, 13, 0.8);
+    }
+    
+    /* ---------------------------------- */
+    /* EFECTO INTERACTIVO (ACTIVADO POR JS) */
+    /* ---------------------------------- */
+
+    .brillo-epico-activo {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(41, 236, 1, 1);
+        transform: scale(1.05); 
+    }
+    
+</style> <!-- Título flotante + colores ticos -->
+        <!--<h1 class="titulo-tico titulo-flotante" style="
+            font-size: 60px;
+            margin: 0;
+            font-weight: 800;
+            text-shadow: 0 0 12px rgba(41, 236, 1, 0.8);
+        ">
+        </h1>
+
+<!--Titulo secundario de la pagina texto animado, lugares por visitar-->
+        <head>
+    <style>
+        /* ---------------------------------- */
+        /* ESTILOS BASE Y FUENTE DE FONDO */
+        /* ---------------------------------- */
+        body {
+            /* fondo de la pagina*/
+            background-color: #1a1a1a; 
+            min-height: 100vh;
+            display: flex;
+            align-items: right;
+            justify-content: right;
+            flex-direction: column;
+            color: white; /* Color de texto base */
+        }
+
+        /* ---------------------------------- */
+        /* ESTILOS BASE DEL CONTENEDOR (Título Secundario) */
+        /* ---------------------------------- */
+
+        .subtitulo-epico {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: left;
+            margin: 5px right;
+            max-width: 700px;
+            font-size: 24px;
+            color: #9af59a; 
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+            transition: all 0.5s ease;
+            padding: 10px 20px;
+            cursor: pointer;
+            
+        }
+
+        /* ---------------------------------- */
+        /* TEXTO PRINCIPAL: EFECTO MAGMA (Permanente) */
+        /* ---------------------------------- */
+
+        .anim-texto-principal-epico { 
+            font-size: 1.4em;
+            font-weight: 900;
+            color: #ce1126; /* Rojo magma */
+            display: inline-block;
+            transition: color 0.4s;
+            /* Sombras iniciales para el brillo */
+            text-shadow: 0 0 5px #ff6600, 0 0 10px #ff3300;
+            
+            /* Aplicación de la animación */
+            animation: brilloMagma 4s infinite alternate ease-in-out;
+        }
+
+        /* ANIMACIÓN CSS DEL MAGMA (PALPITAR) */
+        @keyframes brilloMagma {
+            0%, 100% { text-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300; }
+            50% { text-shadow: 0 0 15px #ff9900, 0 0 30px #ff0000; }
+        }
+
+        /* ---------------------------------- */
+        /* CTA: EFECTO HUMO/VAPOR (Interacción) */
+        /* ---------------------------------- */
+
+        .cta-epico {
+            display: block;
+            font-size: 18px;
+            font-style: italic;
+            color: #defad8; /* verde*/
+            margin-top: 10px;
+            transition: all 0.4s ease;
+        }
+
+        /* El emoji del perezoso */
+        #sloth-emoji-epico {
+            display: inline-block;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        /* ---------------------------------- */
+        /* CLASES ACTIVAS (Añadidas por JavaScript) */
+        /* ---------------------------------- */
+
+        /* Clase activada al hover (Efecto Humo/Vapor) */
+        .cta-activo {
+            color: #e40505;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+            transform: translateY(-5px); /* Se levanta un poco */
+        }
+
+        /* Perezoso despierto (Selva) */
+        .perezoso-activo-epico {
+            transform: rotate(15deg) scale(1.5);
+            text-shadow: 0 0 12px #3f0fec; /* Brillo verde intenso */
+        }
+        
+    </style>
 </head>
 <body>
-    <header class="hero-header">
-        <div class="header-overlay"></div>
-        <div class="header-content">
-            <h1 class="main-title">Oasis Tico</h1>
-            <h2 class="subtitle">Descubre los mejores lugares para visitar y sugiere tu próximo destino.</h2>
-            <h2 class="subtitle" p>Mueve el cursor para ver al perezoso 🦥 </p> </h2>
-            <h3 class="tiktok-tag">
-  <a href="https://www.tiktok.com/@geisoncarrillo" 
-   target="_blank"
-   style="
-     display: inline-block;
-     padding: 12px 25px;
-     background: linear-gradient(to right, #25F4EE, #FE2C55, #FFD700); /* Azul, rojo y dorado de TikTok + tropical */
-     color: white;
-     font-family: Arial, sans-serif;
-     font-weight: bold;
-     text-decoration: none;
-     border-radius: 30px;
-     border: 2px solid #FFD700;
-     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-     font-size: 18px;
-     text-align: center;
-     transition: all 0.3s;
-   "
-   onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 15px rgba(0, 0, 0, 0.3)';"
-   onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.2)';"
->
-   🌊 TIKTOK🌞
-</a> 
-<a href="https://www.instagram.com/geisonc28?utm_source=qr&igsh=ZzhjYTF0eTl6N3Fi" 
-   target="_blank"
-   style="
-     display: inline-block;
-     padding: 12px 30px;
-     background: linear-gradient(to right, #833AB4, #E1306C, #F56040, #F77737); /* Degradado de Instagram + lava */
-     color: white;
-     font-family: 'Arial Black', sans-serif;
-     font-weight: bold;
-     text-decoration: none;
-     border-radius: 50px;
-     border: 2px solid #FF4500;
-     box-shadow: 0 4px 15px rgba(231, 76, 60, 0.5);
-     font-size: 18px;
-     text-align: center;
-     transition: all 0.3s;
-     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
-   "
-   onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 20px rgba(231, 76, 60, 0.7)';"
-   onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(231, 76, 60, 0.5)';"
->
-   🌋Instagram📸
-</a>
+    
+    <h1 class="titulo-tico titulo-flotante" style="
+        font-size: 60px;
+        margin: 0;
+        font-weight: 800;
+        color: white;
+        text-shadow: 0 0 12px rgba(41, 236, 1, 0.8);
+    ">
+        
+    </h1>
 
-</h3>
+    <p class="subtitulo-epico" id="titulo-epico">
+        Una página que muestra lugares por conocer
+        en la hermosa Tiquicia.
+        <br>
+        <span class="cta-epico" id="cta-epico">
+            Desliza el cursor para despertar al perezoso <span id="sloth-emoji-epico">🦥</span>
+        </span>
+    </p>
+
+    <script src="javascript_animaciones.js"></script>
+
+</body>
+</html>
+</body>
+</html>
+        
+        </p>
+
+        <!-- Botones sociales -->
+        <div style="
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        ">
+
+            <!-- TikTok -->
+            <a href="#" style="
+                padding: 12px 28px;
+                background: linear-gradient(45deg, #fe2c55, #ff9900);
+                color: white;
+                font-weight: bold;
+                border-radius: 30px;
+                text-decoration: none;
+                font-size: 17px;
+                box-shadow: 0 0 15px rgba(255, 50, 80, 0.7);
+                transition: 0.3s;
+            "
+                onmouseover="this.style.transform='scale(1.07)'"
+                onmouseout="this.style.transform='scale(1)'"
+            >
+                📘 TIKTOK 🌟
+            </a>
+
+            <!-- Instagram -->
+            <a href="#" style="
+                padding: 12px 28px;
+                background: linear-gradient(45deg, #e1306c, #6f00ff);
+                color: white;
+                font-weight: bold;
+                border-radius: 30px;
+                text-decoration: none;
+                font-size: 17px;
+                box-shadow: 0 0 15px rgba(225, 48, 108, 0.7);
+                transition: 0.3s;
+            "
+                onmouseover="this.style.transform='scale(1.07)'"
+                onmouseout="this.style.transform='scale(1)'"
+            >
+                🌁 Instagram 📸
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+
+</header>
+
             
         </div>
     </header> <!--Destinos-->
@@ -512,19 +734,10 @@ Ubicado en la provincia de Limón, en la costa Caribe del país, el Pacuare es c
             </div>
         </div>
 
-        <div class="suggestions-box">
-            <h2><i class="fas fa-lightbulb"></i> ¡Déjanos tus sugerencias para el siguiente viaje!</h2>
-            <p>Si tienes alguna recomendación o comentario, por favor escríbelo aquí:</p>
-            <form action="send_email.php" method="POST">
-                <textarea name="suggestion" placeholder="Escribe tu sugerencia aquí..." required></textarea>
-                <br>
-                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar Sugerencia</button>
-            </form>
-        </div>
     </div>
 
     <footer class="main-footer">
-        <p>&copy; 2023 ExploraTico. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Oasis Tico. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
