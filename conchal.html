@@ -503,30 +503,26 @@
             </div>
             <div class="gallery-item">
                 <img src="Fotos portadas/c9o0nchal4.jpg" alt="Arena de conchas de cerca">
-            <!-- Video -->
-    <div class="gallery-item">
-        <!-- 
-        CAMBIO: Reemplazamos la etiqueta <img> por <video>
-        - autoplay: se reproduce automáticamente
-        - muted: sin audio (requerido para autoplay en muchos navegadores)
-        - loop: se repite continuamente
-        - playsinline: evita modo pantalla completa en móviles
-        -->
+             </div>
+                <!-- Video -->
+     <!-- Versión Simplificada - Solo HTML y CSS -->
+<div class="gallery-item">
+    <div class="video-container">
         <video 
-            autoplay 
+            controls
             muted 
             loop 
             playsinline
-            poster="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+            preload="metadata"
+            style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;"
+            poster="Fotos portadas/video-poster.jpg"
         >
-            <!-- Múltiples formatos para compatibilidad con navegadores -->
-            <source src="Fotos portadas/20250817_095040.mp4" type="video/mp4">
-            
-            <!-- Texto alternativo si el video no carga -->
+            <source src="9b261b52900832ff7987ae902a4b9ea9.mp4" type="video/mp4">
             Tu navegador no soporta el elemento video.
         </video>
     </div>
-        </div>
+    
+
     </section>
     
     <div class="warning-box" style="background-color: #D1ECF1; border-left: 5px solid #F1C40F; padding: 15px; margin: 20px 0; border-radius: 4px;">
