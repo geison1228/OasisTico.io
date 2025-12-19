@@ -1,65 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
 <head>
-  <!DOCTYPE html>
-<html>
-<head>
-  <style>
-   body {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><text font-family="Arial" font-size="30" x="5" y="35" fill="%234CAF50">🦥</text></svg>') 5 5, auto;
-  }
-</style>  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oasis Tico - Destinos de Viaje en Costa Rica</title>
 
-<!--</style>  titulo test-->
-    
-    
+<!-- Enlace a FontAwesome (CDN) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><text font-family="Arial" font-size="30" x="5" y="35" fill="%234CAF50">🦥</text></svg>') 5 5, auto;
+}
 </style>
 </head>
 <body>
 
-
-  <!-- Cursor perezoso móvil -->
-  <div id="perezoso-movil" style="position:fixed;font-size:30px;pointer-events:none;z-index:9999;display:none;">🦥</div>
-  <script>
+<!-- Cursor perezoso móvil -->
+<div id="perezoso-movil" style="position:fixed;font-size:30px;pointer-events:none;z-index:9999;display:none;">🦥</div>
+<script>
     if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-      const p = document.getElementById('perezoso-movil');
-      p.style.display = 'block';
-      document.addEventListener('touchmove', (e) => {
+        const p = document.getElementById('perezoso-movil');
+        p.style.display = 'block';
+        document.addEventListener('touchmove', (e) => {
         p.style.left = (e.touches[0].clientX - 15) + 'px';
         p.style.top = (e.touches[0].clientY - 15) + 'px';
-      });
+    });
     }
-  </script>
-</body>
-</html>
-  
 </script>
-</body> <!-- Asegúrarse de que esto esté al final -->
-</body>
-</html>
-
-<head>
-  <!-- Meta tags obligatorios -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Enlace a FontAwesome (CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <!-- Tu archivo CSS personalizado -->
-  <link rel="stylesheet" href="CSS"> <!-- Ajusta la ruta según tu estructura -->
-  
-
-</head>
-<body>
-  <!-- Botón de Costa Rica -->
-  <a href="https://www.tiktok.com/@geisoncarrillo" target="_blank" class="boton-costa-rica">
-    <i class="fas fa-palm-tree"></i> 
-  </a>
-</body>
-</html>
-       
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Oasis Tico - Destinos de Viaje en Costa Rica</title>
     <link rel="stylesheet" href="Fotos portadas/portada pagina.jpg"> <!-- Foto Portada -->
@@ -163,19 +130,20 @@
         }
 
         .destination {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(221, 240, 239, 0.959);
+            backdrop-filter: blur(100px);
             border-radius: 15px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease ease-in-out;
             box-shadow: 0 8px 16px rgba(255, 0, 0, 0.4);
-            border: 2px solid rgba(255,255,255,0.2);
+            border: 2px  rgba(255,255,255,0.2);
         }
 
         .destination:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 15px 30px rgba(206, 17, 38, 0.6);
-            border-color: #ffd700;
+            border-color: #e6ecea;
+            animation: glowEffect 1.5s infinite alternate;
         }
 
         .destination img {
@@ -198,7 +166,7 @@
 
         .destination p {
             margin: 15px;
-            color: #ccc;
+            color: hsl(244, 96%, 49%);
         }
 
         .destination a {
@@ -397,7 +365,7 @@
 
     /* Estilos base del H1 = OasisTico titulo*/
     .titulo-tico {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: top;
             margin: traslateY(-20px);
             max-width: 700px;
@@ -427,47 +395,28 @@
         text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(41, 236, 1, 1);
         transform: scale(1.05); 
     }
-    
-</style> <!-- Título flotante + colores ticos -->
-        <!--<h1 class="titulo-tico titulo-flotante" style="
-            font-size: 60px;
-            margin: 0;
-            font-weight: 800;
-            text-shadow: 0 0 12px rgba(41, 236, 1, 0.8);
-        ">
-        </h1>
-
-<!--Titulo secundario de la pagina texto animado, lugares por visitar-->
-        <head>
+</style>
     <style>
         /* ---------------------------------- */
         /* ESTILOS BASE Y FUENTE DE FONDO */
         /* ---------------------------------- */
         body {
-            /* fondo de la pagina*/
-<<<<<<< HEAD
-                background-image: url('Gemini_Generated_Image_gafk4vgafk4vgafk.png');
-    background-size: 0;/* Esto hace que la imagen cubra todo el área *
-    background-position: center center; /* Centra la imagen */
-    background-repeat: repeat-y; /* Evita que se repita */
-    background-attachment: fixed; /* Opcional: fija la imagen al hacer scroll */
-    
+    background-color: #d4c4c4;
+    background-image: url('Gemini_Generated_Image_su81a3su81a3su81.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* Alinea a la derecha */
     justify-content: center;
     flex-direction: column;
     color: white;
-=======
-            background-color: #1a1a1a; 
-            min-height: 100vh;
-            display: flex;
-            align-items: right;
-            justify-content: right;
-            flex-direction: column;
-            color: white; /* Color de texto base */
->>>>>>> b8132b2f9553d7a27b0f712dca8cfa97530203ae
-        }
+    padding-right: 5%; /* Espacio del borde derecho */
+}
+/* fondo de la pagina */
+
 
         /* ---------------------------------- */
         /* ESTILOS BASE DEL CONTENEDOR (Título Secundario) */
@@ -476,7 +425,7 @@
         .subtitulo-epico {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: left;
-            margin: 5px right;
+            margin: 5px 0 5px 0;
             max-width: 700px;
             font-size: 24px;
             color: #9af59a; 
@@ -576,10 +525,9 @@
 </body>
 </html>
         
-        </p>
-
         <!-- Botones sociales -->
-        <div style="
+        <div
+
             margin-top: 25px;
             display: flex;
             justify-content: center;
@@ -626,13 +574,7 @@
     </div>
 </div>
 
-
-
-</header>
-
-            
-        </div>
-    </header> <!--Destinos-->
+<!-- Destinos -->
 
     <div class="container">
         <div class="destination">
@@ -698,40 +640,39 @@
             <a href="poas.html">Más detalles <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="destination">
-           <img src="Assets/Fotos Portada/20250511_103503.jpg" alt="2 Novillos">
-           <h3>2 Novillos</h3>
-           <p>Altura: Aproximadamente 20-25 metros de caída.Piscina natural: Aguas frescas y cristalinas, ideales para nadar.
+        <img src="Assets/Fotos Portada/20250511_103503.jpg" alt="2 Novillos">
+        <h3>2 Novillos</h3>
+        <p>Altura: Aproximadamente 20-25 metros de caída.Piscina natural: Aguas frescas y cristalinas, ideales para nadar.
             Entorno: Rodeada de bosque tropical húmedo, con una biodiversidad rica (aves, mariposas y flora exuberante).</p>
-           <a href="2novillos.html">Más detalles <i class="fas fa-arrow-right"></i></a>
+        <a href="2novillos.html">Más detalles <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="destination">
-          <img src="Fotos portadas/DSC_3349.JPG" alt="Rafting">
-          <h3>Rafting Rio Pacuare</h3>
-          <p>El río Pacuare es uno de los mejores ríos para la práctica del rafting en Costa Rica 
+        <img src="Fotos portadas/DSC_3349.JPG" alt="Rafting">
+        <h3>Rafting Rio Pacuare</h3>
+        <p>El río Pacuare es uno de los mejores ríos para la práctica del rafting en Costa Rica 
 Ubicado en la provincia de Limón, en la costa Caribe del país, el Pacuare es conocido por sus aguas azul-verdosas, cascadas románticas, imponentes acantilados y exuberante vegetación .</p>
-          <a href="rafpacuare.html">Más detalles <i class="fas fa-arrow-right"></i></a>
+        <a href="rafpacuare.html">Más detalles <i class="fas fa-arrow-right"></i></a>
 
-          </div>
+        </div>
         <div class="destination">
-          <img src="Fotos portadas/conchalindex.jpg" alt="Manuel Antonio">
-          <h3>Playa Cochal</h3>
-          <p>La playa Conchal es una de las playas más hermosas y populares de Costa Rica. Ubicada en la provincia de Guanacaste, en la costa del Pacífico, Conchal se caracteriza por sus aguas cristalinas y una arena única hecha de diminutas conchas trituradas.</p>
-          <a href="conchal.html">Más detalles <i class="fas fa-arrow-right"></i></a>
+        <img src="Fotos portadas/conchalindex.jpg" alt="Manuel Antonio">
+        <h3>Playa Cochal</h3>
+        <p>La playa Conchal es una de las playas más hermosas y populares de Costa Rica. Ubicada en la provincia de Guanacaste, en la costa del Pacífico, Conchal se caracteriza por sus aguas cristalinas y una arena única hecha de diminutas conchas trituradas.</p>
+        <a href="conchal.html">Más detalles <i class="fas fa-arrow-right"></i></a>
 
-          </div>
+        </div>
         <div class="destination">
-          <img src="Fotos portadas/indexcerro.jpg" alt="cerropelado">
-          <h3>Cerro Pelado</h3>
-          <p> Es un volcán extinto con una altura aproximada de 680 m s. n. m. Su paisaje es único porque la erosión dejó al descubierto el “esqueleto” volcánico, creando un relieve árido y espectacular</p>
-          <a href="cerropelado.html">Más detalles <i class="fas fa-arrow-right"></i></a>
+        <img src="Fotos portadas/indexcerro.jpg" alt="cerropelado">
+        <h3>Cerro Pelado</h3>
+        <p> Es un volcán extinto con una altura aproximada de 680 m s. n. m. Su paisaje es único porque la erosión dejó al descubierto el “esqueleto” volcánico, creando un relieve árido y espectacular</p>
+        <a href="cerropelado.html">Más detalles <i class="fas fa-arrow-right"></i></a>
 
-          </div>
+        </div>
         <div class="destination">
-          <img src="Fotos portadas/gataindex.jpg" alt="Manuel Antonio">
-          <h3>Quebrada Gata y rio Barroso</h3>
-          <p>Es conocida por sus cascadas impresionantes, cañones profundos y aguas cristalinas. Forma parte de un sistema natural junto al río Barroso. Rodeada de bosques nubosos y paisajes poco explorados, ofrece una experiencia de conexión pura con la naturaleza
-</p>
-          <a href="quebrada.html">Más detalles <i class="fas fa-arrow-right"></i></a>
+        <img src="Fotos portadas/gataindex.jpg" alt="Manuel Antonio">
+        <h3>Quebrada Gata y rio Barroso</h3>
+        <p>Es conocida por sus cascadas impresionantes, cañones profundos y aguas cristalinas. Forma parte de un sistema natural junto al río Barroso. Rodeada de bosques nubosos y paisajes poco explorados, ofrece una experiencia de conexión pura con la naturaleza</p>
+        <a href="quebrada.html">Más detalles <i class="fas fa-arrow-right"></i></a>
 
         </div>
         <div class="destination">
@@ -755,18 +696,21 @@ Ubicado en la provincia de Limón, en la costa Caribe del país, el Pacuare es c
         <a href="calzon.html">Más detalles <i class="fas fa-arrow-right"></i></a>
         
 </div>
-    </div> 
+    </div>
+
+    <div class="video-suggestions">
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
             <div class="video-overlay">
                 <h3>Mira nuestras aventuras en Costa Rica</h3>
             </div>
         </div>
-
     </div>
 
     <footer class="main-footer">
         <p>&copy; 2025 Oasis Tico. Todos los derechos reservados.</p>
     </footer>
 </body>
+
+
 </html>
