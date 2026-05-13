@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parque Nacional Carara - OASIS TICO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+        
+        :root {
+            --verde-bosque: #1B4D3E;
+            --verde-lima: #7FB069;
+            --rojo-lapa: #D21F3C;
+            --blanco: #F9FBF9;
+            --marron-tierra: #5D4037;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--blanco);
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .leaf-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0C150,50,350,0,500,80C650,150,850,20,1200,100V0H0Z" opacity=".15" fill="%231B4D3E"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--verde-bosque);
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px) scale(1.1);
+            background: var(--verde-bosque);
+        }
+        
+        .back-btn i { color: var(--verde-bosque); font-size: 1.2rem; transition: all 0.3s; }
+        .back-btn:hover i { color: white; }
+        
+        .hero {
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('Fotos portadas/slide1.jpg') center/cover fixed;  
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--blanco));
+            z-index: 1;
+        }
+        
+        .hero-content { transform: translateY(20px); opacity: 0; animation: fadeUp 1s forwards 0.5s; }
+        @keyframes fadeUp { to { transform: translateY(0); opacity: 1; } }
+        
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); }
+        .hero p { font-size: 1.5rem; max-width: 800px; margin: 0 auto; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); }
+        
+        .info-section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; position: relative; }
+        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; color: var(--verde-bosque); position: relative; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--rojo-lapa); border-radius: 2px; }
+        
+        .info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .info-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); transition: all 0.4s ease; border-bottom: 5px solid var(--verde-bosque); opacity: 0; transform: translateY(30px); }
+        .info-card:nth-child(1) { animation: cardAppear 0.8s forwards 0.3s; }
+        .info-card:nth-child(2) { animation: cardAppear 0.8s forwards 0.5s; }
+        .info-card:nth-child(3) { animation: cardAppear 0.8s forwards 0.7s; }
+        @keyframes cardAppear { to { opacity: 1; transform: translateY(0); } }
+        
+        .card-header { background: var(--verde-bosque); color: white; padding: 1.5rem; text-align: center; }
+        .card-header i { font-size: 2.5rem; margin-bottom: 1rem; color: var(--verde-lima); }
+        .card-body { padding: 1.5rem; }
+        .card-body li { list-style: none; padding: 0.5rem 0; position: relative; padding-left: 1.5rem; }
+        .card-body li::before { content: '🌿'; position: absolute; left: 0; font-size: 0.8rem; }
+        
+        .map-container { margin: 4rem auto; max-width: 800px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); border: 5px solid white; }
+        .map-container iframe { width: 100%; height: 400px; border: none; }
+        
+        /* GALERÍA ACTUALIZADA */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            background: #000;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .gallery-item:hover { transform: scale(1.03); z-index: 2; }
+        
+        .gallery-item img, 
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            pointer-events: none;
+        }
+
+        .bird-decoration {
+            position: absolute;
+            font-size: 5rem;
+            color: rgba(210, 31, 60, 0.1);
+            z-index: -1;
+            animation: birdFly 10s infinite linear;
+        }
+
+        @keyframes birdFly {
+            0% { transform: translate(-100px, 0) rotate(0deg); }
+            50% { transform: translate(50px, -20px) rotate(10deg); }
+            100% { transform: translate(-100px, 0) rotate(0deg); }
+        }
+        
+        footer {
+            background: var(--verde-bosque);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            border-top: 8px solid var(--rojo-lapa);
+        }
+        
+        .social-link { color: white; font-size: 1.5rem; margin: 0 10px; transition: color 0.3s; }
+        .social-link:hover { color: var(--rojo-lapa); }
+    </style>
+</head>
+<body>
+    <div class="leaf-bg"></div>
+    
+    <a href="https://geison1228.github.io/OasisTico.io/" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>P.N. Carara</h1>
+            <p>El santuario de la Lapa Roja y el punto de encuentro de dos bosques</p>
+        </div>
+    </section>
+    
+    <div class="bird-decoration" style="top: 20%; right: 10%;">
+        <i class="fas fa-dove"></i>
+    </div>
+    
+    <section class="info-section">
+        <h2 class="section-title">Naturaleza en Transición</h2>
+        
+        <div class="info-cards">
+            <!-- Tarjetas de ubicación, biodiversidad y qué hacer omitidas para brevedad, son iguales a tu base -->
+            <div class="info-card">
+                <div class="card-header"><i class="fas fa-map-marker-alt"></i><h3>Ubicación</h3></div>
+                <div class="card-body"><p>Pacífico Central, cerca del Río Tárcoles.</p></div>
+            </div>
+            <div class="info-card">
+                <div class="card-header"><i class="fas fa-feather-alt"></i><h3>Biodiversidad</h3></div>
+                <div class="card-body"><ul><li>Lapa Roja</li><li>400+ especies de aves</li></ul></div>
+            </div>
+            <div class="info-card">
+                <div class="card-header"><i class="fas fa-binoculars"></i><h3>Qué Hacer</h3></div>
+                <div class="card-body"><ul><li>Birdwatching</li><li>Senderismo</li></ul></div>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15719.648057280734!2d-84.607421!3d9.773179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa1ce54f3b55555%3A0x6d44558e0a3f9e98!2sParque%20Nacional%20Carara!5e0!3m2!1ses!2scr!4v1700000000000!5m2!1ses!2scr" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        
+        <h2 class="section-title">Explora Carara en Detalle</h2>
+        
+        <div class="gallery">
+            <!-- VIDEO 1 -->
+            <div class="gallery-item">
+                <video controls muted loop playsinline>
+                    <source src="Fotos portadas/20260421_121732.mp4" type="video/mp4">
+                </video>
+                <div class="video-label"><i class="fas fa-video"></i></div>
+            </div>
+
+            <!-- FOTO 1 -->
+            <div class="gallery-item">
+                <img src="Fotos portadas/20260421_135604.jpg" alt="Carara Foto 1">
+            </div>
+
+            <!-- VIDEO 2 -->
+            <div class="gallery-item">
+                <video controls muted loop playsinline>
+                    <source src="Fotos portadas/20260421_123037.mp4" type="video/mp4">
+                </video>
+                <div class="video-label"><i class="fas fa-video"></i></div>
+            </div>
+
+            <!-- FOTO 2 -->
+            <div class="gallery-item">
+                <img src="Fotos portadas/20260421_115625.jpg" alt="Carara Foto 2">
+            </div>
+
+            <!-- VIDEO 3 -->
+            <div class="gallery-item">
+                <video controls muted loop playsinline>
+                    <source src="Fotos portadas/20260421_121942.mp4" type="video/mp4">
+                </video>
+                <div class="video-label"><i class="fas fa-video"></i></div>
+            </div>
+
+            <!-- FOTO 3 -->
+            <div class="gallery-item">
+                <img src="Fotos portadas/20260421_105347(0).jpg" alt="Carara Foto 3">
+            </div>
+        </div>
+        
+    </section>
+    
+    <footer>
+        <p>© 2026 OASIS TICO - Carara Natural Experience</p>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
