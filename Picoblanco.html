@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerro Pico Blanco - OASIS TICO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+        
+        :root {
+            --verde-vivo: #2ECC71;      /* Verde esmeralda eléctrico */
+            --verde-jungla: #1DB954;    /* Verde vibrante de alta energía */
+            --verde-oscuro: #145A32;    /* Contraste profundo */
+            --antracita: #2C3E50;       /* Texto base elegante */
+            --blanco-puro: #FFFFFF;
+            --fondo-fresco: #E8F8F5;    /* Fondo con un sutil toque menta */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--fondo-fresco);
+            color: var(--antracita);
+            overflow-x: hidden;
+        }
+        
+        /* Animación de entrada para el Hero */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animación para los íconos */
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Fondo dinámico de montañas */
+        .mountain-bg {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 160px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,120 L150,30 L350,90 L550,15 L750,85 L950,25 L1200,120 Z" opacity=".12" fill="%232ECC71"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+        
+        /* Botón de regreso flotante */
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--verde-vivo);
+        }
+        
+        .back-btn:hover { 
+            transform: scale(1.1) translateX(-3px); 
+            background: var(--verde-vivo); 
+        }
+        .back-btn i { color: var(--verde-oscuro); font-size: 1.3rem; transition: color 0.3s; }
+        .back-btn:hover i { color: white; }
+        
+        /* Hero Section Eléctrico */
+        .hero {
+            height: 75vh;
+            background: linear-gradient(rgba(16, 44, 27, 0.6), rgba(20, 90, 50, 0.3)), 
+                        url('Fotos portadas/portadapico.jpg') center/cover fixed;  
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            color: #FFFFFF;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            background: var(--verde-jungla);
+            padding: 8px 25px;
+            display: inline-block;
+            border-radius: 50px;
+            margin-top: 15px;
+            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
+        }
+        
+        /* Info Section */
+        .info-section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--verde-oscuro);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: var(--verde-vivo);
+            border-radius: 5px;
+        }
+        
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .info-card {
+            background: var(--blanco-puro);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(20, 90, 50, 0.05);
+            border-top: 6px solid var(--verde-vivo);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+        }
+
+        .info-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 20px 40px rgba(46, 204, 113, 0.15);
+            border-top-color: var(--verde-jungla);
+        }
+        
+        .info-card i { 
+            font-size: 3.5rem; 
+            color: var(--verde-jungla); 
+            margin-bottom: 1.5rem; 
+            transition: all 0.3s;
+        }
+        
+        .info-card:hover i {
+            animation: iconBounce 0.6s ease infinite;
+            color: var(--verde-oscuro);
+        }
+
+        .info-card h3 { margin-bottom: 1rem; color: var(--verde-oscuro); font-size: 1.5rem; }
+        .info-card p { line-height: 1.6; color: #566573; }
+        .info-card ul { list-style: none; }
+        .info-card li { margin-bottom: 12px; padding-left: 25px; position: relative; color: #566573; }
+        .info-card li::before { content: '🌿'; position: absolute; left: 0; top: 2px; }
+        
+        /* Galería Renovada */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 320px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: transform 0.4s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item video, .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--verde-oscuro);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid var(--verde-vivo);
+        }
+        
+        /* Mapa dinámico */
+        .map-container {
+            margin: 5rem 0 2rem 0;
+            height: 480px;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 6px solid white;
+            box-shadow: 0 25px 50px rgba(20, 90, 50, 0.1);
+        }
+        
+        /* Footer Energético */
+        footer {
+            background: linear-gradient(135deg, var(--verde-oscuro), #0E3A20);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            margin-top: 5rem;
+            position: relative;
+        }
+
+        footer p { font-weight: 300; letter-spacing: 1px; margin-bottom: 1.5rem; }
+
+        .social-link {
+            color: white;
+            font-size: 2rem;
+            margin: 0 15px;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .social-link:hover { 
+            color: var(--verde-vivo); 
+            transform: scale(1.3) translateY(-5px); 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="mountain-bg"></div>
+    
+    <a href="https://geison1228.github.io/OasisTico.io/" class="back-btn">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pico Blanco</h1>
+            <p>2.271 msnm • Senderos Vivos • Escazú</p>
+        </div>
+    </section>
+    
+    <section class="info-section">
+        <h2 class="section-title">El Guardián de Piedra</h2>
+        
+        <div class="info-cards">
+            <div class="info-card">
+                <i class="fas fa-mountain"></i>
+                <h3>El Desafío Rocoso</h3>
+                <p>Una travesía mítica en los Cerros de Escazú. Pico Blanco destaca por sus imponentes paredes de piedra, sus cuestas empinadas conocidas como "rompe-piernas" y terrenos llenos de adrenalina y pura tracción técnica.</p>
+            </div>
+            
+            <div class="info-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Entorno y Clima</h3>
+                <ul>
+                    <li>Temperatura promedio de 14°C a 20°C</li>
+                    <li>Vegetación densa de bosque premontano</li>
+                    <li>Formaciones rocosas colosales únicas en el Valle</li>
+                    <li>Miradores naturales espectaculares y llenos de frescura</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <i class="fas fa-shoe-prints"></i>
+                <h3>Tips de Aventura</h3>
+                <ul>
+                    <li>Calzado de trail con excelente agarre para roca suelta</li>
+                    <li>Bastones de senderismo clave para proteger tus rodillas</li>
+                    <li>Ropa transpirable y cortavientos para la cumbre</li>
+                    <li>Iniciar muy temprano para disfrutar el sol en la cima</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 6rem;">Momentos en la Cumbre</h2>
+        
+        <div class="gallery">
+            <!-- VIDEO 1: El ascenso -->
+            <div class="gallery-item">
+                <video controls muted loop playsinline>
+                    <source src="Fotos portadas/videopico.mp4" type="video/mp4">
+                </video>
+                <span class="badge">VIDEO: EN RUTA</span>
+            </div>
+
+            <!-- FOTO 1 -->
+            <div class="gallery-item">
+                <img src="Fotos portadas/pico1.jpg" alt="Vista desde Pico Blanco">
+                <span class="badge">FOTO: PANORAMA</span>
+            </div>
+
+            <!-- VIDEO 2: La Neblina -->
+            <div class="gallery-item">
+                <video controls muted loop playsinline>
+                    <source src="Fotos portadas/picovideo2.mp4" type="video/mp4">
+                </video>
+                <span class="badge">VIDEO: NATURALEZA</span>
+            </div>
+
+            <!-- FOTO 2 -->
+            <div class="gallery-item">
+                <img src="Fotos portadas/pico2.jpg" alt="Senderos de piedra">
+                <span class="badge">FOTO: SENDEROS</span>
+            </div>
+
+            <!-- VIDEO 3: Cumbre -->
+            <div class="gallery-item">
+                <video controls muted loop playsinline>
+                    <source src="Fotos portadas/pico3.mp4" type="video/mp4">
+                </video>
+                <span class="badge">VIDEO: LA CIMA</span>
+            </div>
+
+            <!-- FOTO 3 -->
+            <div class="gallery-item">
+                <img src="Fotos portadas/pico4.jpg" alt="Logro Pico Blanco">
+                <span class="badge">FOTO: CONQUISTA</span>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://maps.google.com/maps?q=Cerro%20Pico%20Blanco,%20Escazu&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+    </section>
+    
+    <footer>
+        <p>© 2026 OASIS TICO - Aventura en las Alturas</p>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
